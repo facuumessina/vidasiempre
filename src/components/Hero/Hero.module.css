@@ -1,0 +1,65 @@
+.heroSection {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 700px;
+}
+
+.logo {
+    width: 12rem;
+    margin-bottom: 1.5rem;
+}
+
+.title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3rem); /* Fuente adaptable */
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    color: rgba(78, 42, 42, 0.85);
+    margin-bottom: 2rem;
+    max-width: 500px;
+}
+
+.ctaButton {
+    background-color: var(--color-accent);
+    color: white;
+    font-family: var(--font-sans);
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0.8rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.ctaButton:hover {
+    transform: scale(1.05);
+}
+
+/* src/components/Hero/Hero.module.css (agregar al final) */
+.heroSection {
+    position: relative; /* Necesario para posicionar la ola */
+    background-color: #FDFBFA; /* Cambiamos el fondo para que la ola se note */
+    overflow: hidden; /* Evita que la ola genere scroll horizontal */
+}
+
+.waveContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0; /* Corrige espacios extra */
+}
