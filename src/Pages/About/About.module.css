@@ -1,0 +1,108 @@
+/* src/Pages/About.module.css (Rediseño final con púas, texturas y legibilidad mejorada) */
+.pageWrapper {
+    padding: 0 2rem 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pageHeader {
+    position: relative;
+    text-align: center;
+    padding: 8rem 0;
+    margin-bottom: -2rem;
+    z-index: 5;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    position: relative;
+    z-index: 2;
+    color: var(--color-text);
+}
+
+.headerBlobs {
+    position: absolute;
+    z-index: 1;
+    width: 150%;
+    max-width: 800px; /* Limita el tamaño de los blobs */
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+
+/* --- ESTILO BASE DE LA TARJETA --- */
+.artisticCard {
+    background-color: #FDFBFA;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    border: 1px solid rgba(78, 42, 42, 0.08);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(78, 42, 42, 0.03), 0 15px 40px rgba(78, 42, 42, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artisticCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(78, 42, 42, 0.05), 0 25px 50px rgba(78, 42, 42, 0.1);
+}
+
+.artisticCard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* --- VARIANTE TERRAZO --- */
+.terrazzoCard::before {
+    background:
+            linear-gradient(rgba(253, 251, 250, 0.85), rgba(253, 251, 250, 0.85)),
+            url('../../assets/terrazzo-pattern.png'); /* Ruta corregida */
+    mix-blend-mode: multiply;
+}
+
+/* --- VARIANTE CONCRETO --- */
+.concreteCard::before {
+    background:
+            linear-gradient(rgba(253, 251, 250, 0.85), rgba(253, 251, 250, 0.85)),
+            url('../../assets/concreto-beige.jpg'); /* Ruta corregida */
+    mix-blend-mode: multiply;
+}
+
+/* --- TEXTO DE LAS TARJETAS (MÁS FUERTE) --- */
+.cardTitle {
+    font-family: var(--font-serif);
+    font-size: 1.8rem; /* Un poco más grande */
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    position: relative;
+    z-index: 1;
+    color: var(--color-text); /* Color sólido */
+}
+
+.artisticCard p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(78, 42, 42, 1); /* Color sólido y más oscuro */
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}

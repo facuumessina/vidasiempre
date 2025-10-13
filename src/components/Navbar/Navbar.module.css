@@ -1,63 +1,106 @@
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--color-background);
-    border-bottom: 1px solid rgba(78, 42, 42, 0.1);
+/* src/components/NavBar/NavBar.module.css (Versión final con agrupación consistente) */
+
+/* El contenedor principal que se pega al tope y centra su contenido */
+.header {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    height: 86px;
+    transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out;
 }
 
+/* La barra de navegación interna (la píldora) */
+.navbar {
+    display: grid;
+    grid-template-columns: auto auto auto; /* 3 columnas que se ajustan al contenido */
+    align-items: center;
+    gap: 2rem;
+
+    /* El ancho siempre se ajusta al contenido */
+    width: max-content;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px; /* Siempre será una píldora */
+
+    transition: all 0.4s ease-in-out;
+}
+
+/* Posiciona los elementos en sus respectivas columnas de la grilla */
+.navStart { justify-self: start; }
+.navList { justify-self: center; }
+.navEnd { justify-self: end; }
+
+
+/* --- ESTADO 1: INCRUSTADO (ARRIBA DE TODO) --- */
+.header.embedded {
+    background-color: var(--color-background);
+    border-bottom: 1px solid rgba(78, 42, 42, 0.1);
+}
+.header.embedded .navbar {
+    background-color: transparent;
+    box-shadow: none;
+    border: 1px solid transparent;
+}
+
+
+/* --- ESTADO 2: FLOTANTE (AL HACER SCROLL) --- */
+.header.floating {
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+}
+.header.floating .navbar {
+    background-color: rgba(245, 241, 233, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(78, 42, 42, 0.1);
+    border: 1px solid rgba(78, 42, 42, 0.15);
+}
+
+
+/* --- Estilos de los links (sin cambios) --- */
 .logoLink {
-    height: 50px;
+    height: 38px;
+    display: flex;
+    align-items: center;
 }
-
 .logo {
     height: 100%;
-    width: auto;
 }
-
 .navList {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 2rem;
+    gap: 1.5rem;
 }
-
-.navLink {
+.navList a {
     text-decoration: none;
     color: var(--color-text);
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    padding-bottom: 5px;
-    position: relative;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-.navLink::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
+.navList a:hover {
+    background-color: rgba(78, 42, 42, 0.05);
+}
+.navList a.active {
+    background-color: var(--color-text);
+    color: var(--color-background);
+}
+.ctaButton {
     background-color: var(--color-accent);
-    transition: width 0.3s ease;
-}
-
-.navLink:hover::after {
-    width: 100%;
-}
-
-.navLink:hover {
-    color: var(--color-accent);
-}
-
-.active {
-    composes: navLink;
-    color: var(--color-accent);
+    color: white;
+    text-decoration: none;
     font-weight: bold;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    transition: transform 0.2s ease;
+}
+.ctaButton:hover {
+    transform: scale(1.05);
 }

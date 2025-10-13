@@ -18,9 +18,6 @@ const Hero: React.FC<HeroProps> = ({ logo, shopUrl }) => {
                 <p className={styles.subtitle}>
                     Descubre nuestras piezas únicas de concreto y terrazo.
                 </p>
-                <a href={shopUrl} target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
-                    Ir a la Tienda
-                </a>
             </div>
             <div className={styles.waveContainer}>
                 {/* SVG de GetWaves.io */}

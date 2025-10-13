@@ -6,8 +6,8 @@ import './index.css';
 
 import Root from './Pages/Root.tsx'; // El layout principal con NavBar y Footer
 import Home from './Pages/Home.tsx';
-import Products from './Pages/Products.tsx';
-import AboutPage from './Pages/About.tsx';
+import Products from './Pages/Products/Products.tsx';
+import AboutPage from './Pages/About/About.tsx';
 
 const router = createBrowserRouter([
     {
