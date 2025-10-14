@@ -1,0 +1,87 @@
+.pageContainer {
+    padding: 2.5rem 2rem; /* Reducido el padding superior */
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: rgba(78, 42, 42, 0.9);
+}
+
+.mainTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--color-text);
+}
+
+.section {
+    margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.pageContainer p {
+    margin-bottom: 1rem;
+}
+
+.pageContainer ul {
+    list-style: disc inside;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.pageContainer li {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Ajustes Responsive --- */
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    .pageContainer {
+        padding: 2rem 1rem; /* Ajustado para móviles */
+    }
+
+    .mainTitle {
+        font-size: clamp(1.8rem, 7vw, 2.2rem);
+        margin-bottom: 2rem;
+    }
+
+    .section {
+        margin-bottom: 2rem;
+    }
+
+    .sectionTitle {
+        font-size: clamp(1.3rem, 5vw, 1.6rem);
+    }
+
+    .pageContainer p,
+    .pageContainer li {
+        font-size: 0.95rem;
+    }
+}
+
+/* Móviles y tabletas (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .pageContainer {
+        padding: 2.5rem 1.5rem; /* Ajustado para tabletas */
+    }
+
+    .mainTitle {
+        font-size: clamp(2rem, 6vw, 2.8rem);
+    }
+
+    .sectionTitle {
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+    }
+
+    .pageContainer p,
+    .pageContainer li {
+        font-size: 1rem;
+    }
+}
