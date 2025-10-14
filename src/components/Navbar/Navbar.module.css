@@ -1,73 +1,39 @@
-/* src/components/NavBar/NavBar.module.css (Versión final con agrupación consistente) */
+/* src/components/NavBar/NavBar.module.css (Floating-only version) */
 
-/* El contenedor principal que se pega al tope y centra su contenido */
+/* El contenedor principal que se pega al tope */
 .header {
     position: sticky;
     top: 0;
     z-index: 100;
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centra la píldora/barra interna */
     padding: 1rem 0;
     height: 86px;
-    transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out;
-}
-
-/* La barra de navegación interna (la píldora) */
-.navbar {
-    display: grid;
-    grid-template-columns: auto auto auto; /* 3 columnas que se ajustan al contenido */
-    align-items: center;
-    gap: 2rem;
-
-    /* El ancho siempre se ajusta al contenido */
-    width: max-content;
-    padding: 0.5rem 0.75rem;
-    border-radius: 999px; /* Siempre será una píldora */
-
-    transition: all 0.4s ease-in-out;
-}
-
-/* Posiciona los elementos en sus respectivas columnas de la grilla */
-.navStart { justify-self: start; }
-.navList { justify-self: center; }
-.navEnd { justify-self: end; }
-
-
-/* --- ESTADO 1: INCRUSTADO (ARRIBA DE TODO) --- */
-.header.embedded {
-    background-color: var(--color-background);
-    border-bottom: 1px solid rgba(78, 42, 42, 0.1);
-}
-.header.embedded .navbar {
-    background-color: transparent;
-    box-shadow: none;
-    border: 1px solid transparent;
-}
-
-
-/* --- ESTADO 2: FLOTANTE (AL HACER SCROLL) --- */
-.header.floating {
     background-color: transparent;
     border-bottom: 1px solid transparent;
 }
-.header.floating .navbar {
+
+/* La barra interna, ahora siempre flotante */
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.5rem 0.75rem;
+    width: max-content;
+    height: auto;
     background-color: rgba(245, 241, 233, 0.7);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(78, 42, 42, 0.1);
+    border-radius: 999px;
     border: 1px solid rgba(78, 42, 42, 0.15);
+    box-shadow: 0 8px 32px rgba(78, 42, 42, 0.1);
 }
 
-
-/* --- Estilos de los links (sin cambios) --- */
-.logoLink {
-    height: 38px;
-    display: flex;
-    align-items: center;
-}
+/* --- Estilos de los links y botones --- */
 .logo {
-    height: 100%;
+    height: 32px;
 }
+
 .navList {
     display: flex;
     list-style: none;
@@ -75,6 +41,7 @@
     padding: 0;
     gap: 1.5rem;
 }
+
 .navList a {
     text-decoration: none;
     color: var(--color-text);
@@ -82,25 +49,180 @@
     font-size: 0.95rem;
     padding: 0.5rem 0.75rem;
     border-radius: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
+
 .navList a:hover {
     background-color: rgba(78, 42, 42, 0.05);
 }
+
 .navList a.active {
     background-color: var(--color-text);
     color: var(--color-background);
 }
+
 .ctaButton {
-    background-color: var(--color-accent);
-    color: white;
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
     text-decoration: none;
     font-weight: bold;
     font-size: 0.9rem;
     padding: 0.6rem 1.2rem;
     border-radius: 20px;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
 }
+
 .ctaButton:hover {
+    background-color: var(--color-accent);
+    color: white;
     transform: scale(1.05);
+}
+
+/* Ocultar el botón de hamburguesa y el menú móvil por defecto en escritorio */
+.hamburgerButton,
+.mobileMenu {
+    display: none;
+}
+
+/* --- Ajustes Responsive --- */
+@media (max-width: 768px) {
+    .header {
+        padding: 0.5rem 0;
+        height: auto;
+    }
+
+    .navbar {
+        width: 90%;
+        max-width: 500px;
+        gap: 0.75rem;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        justify-content: space-between; /* Espacio entre logo y hamburguesa */
+    }
+
+    .logo {
+        height: 28px;
+    }
+
+    .navList, .ctaButton {
+        display: none; /* Ocultar en móvil */
+    }
+
+    /* Mostrar botón de hamburguesa */
+    .hamburgerButton {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 10;
+    }
+
+    .hamburgerLine {
+        width: 100%;
+        height: 3px;
+        background-color: var(--color-text);
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        position: relative;
+    }
+
+    /* Menú móvil */
+    .mobileMenu {
+        position: absolute;
+        top: 100%; /* Debajo de la navbar */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 500px;
+        background-color: rgba(245, 241, 233, 0.95); /* Fondo semitransparente */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        border: 1px solid rgba(78, 42, 42, 0.15);
+        box-shadow: 0 8px 32px rgba(78, 42, 42, 0.1);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        z-index: 99; /* Asegura que esté por encima del contenido */
+    }
+
+    .mobileNavList {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 0.75rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .mobileNavList a {
+        text-decoration: none;
+        color: var(--color-text);
+        font-weight: 500;
+        font-size: 1.1rem;
+        padding: 0.75rem 0;
+        display: block;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobileNavList a:hover {
+        background-color: rgba(78, 42, 42, 0.05);
+    }
+
+    .mobileNavList a.active {
+        background-color: var(--color-accent);
+        color: white;
+    }
+
+    .mobileCtaButton {
+        background-color: var(--color-accent);
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 20px;
+        transition: transform 0.2s ease;
+        width: fit-content;
+        margin-top: 0.5rem;
+    }
+
+    .mobileCtaButton:hover {
+        transform: scale(1.05);
+    }
+}
+
+/* Para tabletas (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar {
+        width: 95%;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+    }
+    .navList a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+    .ctaButton {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+    /* Asegurarse de que el botón de hamburguesa y el menú móvil estén ocultos */
+    .hamburgerButton, .mobileMenu {
+        display: none;
+    }
+    .navList, .ctaButton {
+        display: flex; /* Mostrar en tabletas */
+    }
 }

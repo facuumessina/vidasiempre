@@ -1,6 +1,120 @@
-.footer {
-    padding: 2rem;
+/* src/components/Footer/Footer.module.css (Con estilos para el icono y responsive) */
+
+.footerWrapper {
+    position: relative;
+    margin-top: -35px;
+    width: 100%;
+}
+
+.waveContainer {
+    position: relative;
+    z-index: 1;
+    line-height: 0;
+}
+
+.waveSvg {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 -10px 15px rgba(78, 42, 42, 0.08));
+}
+
+.footerContent {
+    background-color: #FDFBFA;
+    padding: 2.5rem 2rem 1.5rem 2rem;
+    position: relative;
+    z-index: 0;
+}
+
+.linksContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
     text-align: center;
     font-size: 0.9rem;
     color: rgba(78, 42, 42, 0.7);
+}
+
+.separator {
+    color: rgba(78, 42, 42, 0.3);
+}
+
+.footerLink {
+    color: rgba(78, 42, 42, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+    color: var(--color-text);
+    text-decoration: underline;
+}
+
+/* --- Estilos para el icono de Instagram --- */
+.socialIconLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit; /* Hereda el color del contenedor padre */
+}
+
+.socialIcon {
+    height: 22px; /* Tamaño del icono */
+    width: 22px;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.socialIconLink:hover .socialIcon {
+    opacity: 1;
+}
+
+/* Nuevo grupo para Términos y Condiciones e Instagram */
+.termsAndSocialGroup {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espacio entre el link y el icono */
+    flex-wrap: nowrap; /* Evita que se rompa en varias líneas */
+}
+
+/* --- Ajustes Responsive para Footer --- */
+@media (max-width: 480px) {
+    .linksContainer {
+        gap: 0.5rem; /* Reducir el espacio entre elementos */
+        font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+    }
+
+    .socialIcon {
+        height: 18px; /* Icono más pequeño en móviles */
+        width: 18px;
+    }
+
+    .termsAndSocialGroup {
+        gap: 0.5rem; /* Reducir el espacio dentro del grupo en móviles */
+    }
+
+    .hideOnMobile {
+        display: none; /* Ocultar el separador en móviles */
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .linksContainer {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .socialIcon {
+        height: 20px;
+        width: 20px;
+    }
+
+    .termsAndSocialGroup {
+        gap: 0.8rem;
+    }
+
+    .hideOnMobile {
+        display: none; /* Ocultar el separador en tabletas */
+    }
 }

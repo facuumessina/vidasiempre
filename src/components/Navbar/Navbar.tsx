@@ -1,46 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
-import logo from '../../assets/logo-navbar.png';
+import logo from '../../assets/logo-navbar.png'; // Asegúrate de que esta ruta sea correcta
 
 const NavBar: React.FC = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            // Usamos un pequeño umbral de 10px para que la animación no se dispare por un mínimo scroll
-            setIsScrolled(window.scrollY > 10);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
-    // Aplicamos las clases al contenedor principal <header>
-    const headerClasses = `${styles.header} ${isScrolled ? styles.floating : styles.embedded}`;
+    const headerClasses = `${styles.header} ${styles.floating}`;
 
     return (
         <header className={headerClasses}>
             <nav className={styles.navbar}>
-                {/* Columna Izquierda: Logo */}
                 <div className={styles.navStart}>
-                    <Link to="/" className={styles.logoLink}>
+                    <Link to="/">
                         <img src={logo} alt="Vida Siempre Logo" className={styles.logo} />
                     </Link>
                 </div>
 
-                {/* Columna Central: Links de Navegación */}
+                {/* Menú de escritorio */}
                 <ul className={styles.navList}>
                     <li><NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')}>Inicio</NavLink></li>
                     <li><NavLink to="/productos" className={({ isActive }) => (isActive ? styles.active : '')}>Productos</NavLink></li>
-                    <li><NavLink to="/sobre-nosotras" className={({ isActive }) => (isActive ? styles.active : '')}>Sobre Nosotras</NavLink></li>
+                    <li><NavLink to="/sobre-nosotros" className={({ isActive }) => (isActive ? styles.active : '')}>Sobre Nosotros</NavLink></li>
                 </ul>
-
-                {/* Columna Derecha: Botón */}
                 <div className={styles.navEnd}>
                     <a href="https://tu-tienda.mercadoshops.com.ar" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
                         Tienda
                     </a>
                 </div>
+
+                {/* Botón de hamburguesa para móviles */}
+                <button className={styles.hamburgerButton} onClick={toggleMenu} aria-label="Abrir menú">
+                    <span className={styles.hamburgerLine}></span>
+                    <span className={styles.hamburgerLine}></span>
+                    <span className={styles.hamburgerLine}></span>
+                </button>
+
+                {/* Menú móvil */}
+                {isMenuOpen && (
+                    <div className={styles.mobileMenu}>
+                        <ul className={styles.mobileNavList}>
+                            <li><NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')} onClick={toggleMenu}>Inicio</NavLink></li>
+                            <li><NavLink to="/productos" className={({ isActive }) => (isActive ? styles.active : '')} onClick={toggleMenu}>Productos</NavLink></li>
+                            <li><NavLink to="/sobre-nosotros" className={({ isActive }) => (isActive ? styles.active : '')} onClick={toggleMenu}>Sobre Nosotros</NavLink></li>
+                        </ul>
+                        <a href="https://tu-tienda.mercadoshops.com.ar" target="_blank" rel="noopener noreferrer" className={styles.mobileCtaButton} onClick={toggleMenu}>
+                            Tienda
+                        </a>
+                    </div>
+                )}
             </nav>
         </header>
     );

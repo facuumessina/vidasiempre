@@ -28,3 +28,61 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
 }
+
+/* --- Ajustes Responsive para Products Page --- */
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    .pageContainer {
+        padding: 3rem 1rem; /* Reducir padding horizontal */
+    }
+
+    .pageTitle {
+        font-size: clamp(1.8rem, 7vw, 2.2rem); /* Ajuste de tamaño de fuente para el título */
+    }
+
+    .pageSubtitle {
+        font-size: 1rem; /* Ajuste de tamaño de fuente para el subtítulo */
+        max-width: 90%;
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+        gap: 1.5rem; /* Reducir el espacio entre tarjetas */
+    }
+}
+
+/* Móviles y tabletas (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .pageContainer {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .pageTitle {
+        font-size: clamp(1.9rem, 6vw, 2.5rem);
+    }
+
+    .pageSubtitle {
+        font-size: 1.05rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Ajustar minmax */
+        gap: 1.8rem;
+    }
+}
+
+/* Tabletas grandes y laptops pequeñas (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .pageContainer {
+        padding: 4rem 2rem;
+    }
+
+    .pageTitle {
+        font-size: clamp(2rem, 4.5vw, 2.8rem);
+    }
+
+    .grid {
+        gap: 2rem;
+    }
+}

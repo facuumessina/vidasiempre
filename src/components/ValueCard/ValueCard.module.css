@@ -1,16 +1,33 @@
 .valueCard {
-    background-color: transparent; /* Sin fondo de tarjeta */
+    background-color: #FDFBFA;
+    border: 1px solid rgba(78, 42, 42, 0.08);
     border-radius: 1rem;
     padding: 2rem;
     text-align: center;
-    border: none; /* Sin bordes */
+    box-shadow: 0 8px 24px rgba(78, 42, 42, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.valueCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(78, 42, 42, 0.08);
 }
 
 .iconWrapper {
-    width: 50px;
-    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
     margin: 0 auto 1.5rem auto;
+    border-radius: 50%;
+    background-color: rgba(197, 110, 85, 0.08);
     color: var(--color-accent);
+}
+
+.iconWrapper svg {
+    width: 30px;
+    height: 30px;
 }
 
 .title {

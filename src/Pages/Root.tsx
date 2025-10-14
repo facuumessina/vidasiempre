@@ -1,16 +1,15 @@
-// src/pages/Root.tsx
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import NavBar from '../components/Navbar/Navbar.tsx';
-import Footer from '../components/Footer/Footer.tsx'; // Reutilizamos el Footer
-import WhatsAppButton from "../components/WhatsAppButton/WhatsAppButton.tsx";
+import NavBar from '../components/NavBar/NavBar'; // Esta es la flotante
+import Footer from '../components/Footer/Footer';
+import WhatsAppButton from "../components/WhatsAppButton/WhatsAppButton";
 
 const Root: React.FC = () => {
     return (
         <>
             <NavBar />
             <main>
-                <Outlet /> {/* Aquí se renderizará el contenido de cada página */}
+                <Outlet />
             </main>
             <Footer />
             <WhatsAppButton />

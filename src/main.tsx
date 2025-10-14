@@ -8,6 +8,7 @@ import Root from './Pages/Root.tsx'; // El layout principal con NavBar y Footer
 import Home from './Pages/Home.tsx';
 import Products from './Pages/Products/Products.tsx';
 import AboutPage from './Pages/About/About.tsx';
+import TermsAndConditions from './Pages/TermsAndConditions/TermsAndConditions.tsx'; // Importamos el nuevo componente
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <Home /> },
             { path: 'productos', element: <Products /> },
-            { path: 'sobre-nosotras', element: <AboutPage /> },
+            { path: 'sobre-nosotros', element: <AboutPage /> },
+            { path: 'terminos-y-condiciones', element: <TermsAndConditions /> }, // Nueva ruta
         ],
     },
 ]);

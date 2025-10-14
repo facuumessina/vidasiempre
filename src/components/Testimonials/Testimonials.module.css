@@ -1,7 +1,7 @@
-/* src/components/Testimonials/Testimonials.module.css */
 .testimonialsSection {
     padding: 4rem 2rem;
     background-color: #FDFBFA;
+    overflow: hidden; /* Oculta el contenido que se sale del viewport */
 }
 
 .container {
@@ -16,10 +16,30 @@
     margin-bottom: 3rem;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+/* --- ESTILOS DEL CARRUSEL --- */
+.carouselViewport {
+    width: 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+
+.carouselTrack {
+    display: flex;
     gap: 2rem;
+    /* El ancho se calculará dinámicamente con JS o se ajustará con media queries */
+    /* Por ahora, un valor grande para asegurar el loop */
+    width: max-content; 
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    /* Ajustaremos esto con JS o media queries para un control más preciso */
+    to { transform: translateX(calc(-100% / 2)); } /* Se desplaza la mitad del track */
+}
+
+.carouselTrack:hover {
+    animation-play-state: paused;
 }
 
 .testimonialCard {
@@ -29,6 +49,9 @@
     border: 1px solid rgba(78, 42, 42, 0.1);
     margin: 0;
     text-align: left;
+    min-width: 300px; /* Ancho mínimo para las tarjetas */
+    width: 350px; /* Ancho preferido, se ajustará con flexbox */
+    flex-shrink: 0; /* Evita que las tarjetas se encojan */
 }
 
 .quote {
@@ -43,4 +66,74 @@
     font-family: var(--font-serif);
     font-weight: bold;
     color: var(--color-text);
+}
+
+/* --- Ajustes Responsive para Testimonials --- */
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    .testimonialsSection {
+        padding: 3rem 1rem;
+    }
+
+    .mainTitle {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 2rem;
+    }
+
+    .carouselTrack {
+        gap: 1rem;
+        animation-duration: 30s; /* Animación más rápida en móviles */
+    }
+
+    .testimonialCard {
+        min-width: 250px; /* Ancho mínimo más pequeño */
+        width: 85vw; /* Ocupa la mayor parte del viewport */
+        padding: 1.5rem;
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
+}
+
+/* Móviles y tabletas (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .testimonialsSection {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .mainTitle {
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    .carouselTrack {
+        gap: 1.5rem;
+        animation-duration: 35s;
+    }
+
+    .testimonialCard {
+        min-width: 280px;
+        width: 45vw; /* Dos tarjetas visibles en tabletas */
+        padding: 1.8rem;
+    }
+}
+
+/* Tabletas grandes y laptops pequeñas (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .testimonialsSection {
+        padding: 4rem 2rem;
+    }
+
+    .mainTitle {
+        font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    }
+
+    .carouselTrack {
+        gap: 1.8rem;
+    }
+
+    .testimonialCard {
+        width: 30vw; /* Tres tarjetas visibles */
+    }
 }

@@ -5,14 +5,14 @@
     overflow: hidden;
     border: 1px solid rgba(78, 42, 42, 0.1);
     box-shadow: 0 8px 24px rgba(78, 42, 42, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
 .productCard:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     box-shadow: 0 16px 34px rgba(78, 42, 42, 0.1);
 }
 
@@ -20,12 +20,18 @@
     width: 100%;
     aspect-ratio: 4 / 3; /* Proporción para las imágenes */
     background-color: var(--color-background);
+    overflow: hidden; /* Asegura que la imagen no se salga del contenedor */
 }
 
 .productMedia img {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    transition: transform 0.4s ease-out; /* Transición suave para el zoom */
+}
+
+.productCard:hover .productMedia img {
+    transform: scale(1.05); /* Aumenta ligeramente la imagen */
 }
 
 .cardBody {

@@ -1,43 +1,151 @@
 .processSection {
     padding: 4rem 2rem;
-    text-align: center;
-}
-
-.mainTitle {
-    font-family: var(--font-serif);
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    margin-bottom: 3rem;
-}
-
-.stepsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.step {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+/* --- Reutilizamos y adaptamos los estilos de las tarjetas --- */
+.artisticCard {
+    background-color: #FDFBFA;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    border: 1px solid rgba(78, 42, 42, 0.08);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(78, 42, 42, 0.05);
+    text-align: center;
+}
+
+.artisticCard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.terrazzoCard::before {
+    background:
+            linear-gradient(rgba(253, 251, 250, 0.85), rgba(253, 251, 250, 0.85)),
+            url('../../assets/terrazzo-pattern.png');
+    mix-blend-mode: multiply;
+}
+
+.concreteCard::before {
+    background:
+            linear-gradient(rgba(253, 251, 250, 0.85), rgba(253, 251, 250, 0.85)),
+            url('../../assets/concreto-beige.jpg');
+    mix-blend-mode: multiply;
 }
 
 .iconWrapper {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 1rem auto;
+    width: 45px;
+    height: 45px;
+    margin: 0 auto 1.5rem auto;
     color: var(--color-accent);
+    position: relative;
+    z-index: 1;
 }
 
-.stepTitle {
+.cardTitle {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    position: relative;
+    z-index: 1;
+    color: var(--color-text);
 }
 
-.stepText {
-    color: rgba(78, 42, 42, 0.85);
-    line-height: 1.6;
+.artisticCard p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(78, 42, 42, 1);
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Ajustes Responsive para Process --- */
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    .processSection {
+        padding: 3rem 1rem; /* Reducir padding horizontal */
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+        gap: 1.5rem; /* Reducir el espacio entre tarjetas */
+    }
+
+    .artisticCard {
+        padding: 1.5rem; /* Reducir padding interno de las tarjetas */
+    }
+
+    .iconWrapper {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+
+    .cardTitle {
+        font-size: 1.5rem;
+    }
+
+    .artisticCard p {
+        font-size: 1rem;
+    }
+}
+
+/* Móviles y tabletas (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .processSection {
+        padding: 3.5rem 1.5rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajustar minmax */
+        gap: 2rem;
+    }
+
+    .artisticCard {
+        padding: 2rem;
+    }
+
+    .iconWrapper {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 1.2rem;
+    }
+
+    .cardTitle {
+        font-size: 1.6rem;
+    }
+
+    .artisticCard p {
+        font-size: 1.05rem;
+    }
+}
+
+/* Tabletas grandes y laptops pequeñas (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .processSection {
+        padding: 4rem 2rem;
+    }
+
+    .grid {
+        gap: 2.2rem;
+    }
+
+    .cardTitle {
+        font-size: 1.7rem;
+    }
 }

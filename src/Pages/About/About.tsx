@@ -1,19 +1,17 @@
-// src/Pages/About.tsx (Con púas y correcciones)
+// src/Pages/About.tsx (Con fondo de resplandor)
 import React from 'react';
 import styles from './About.module.css';
-import GuitarPickBlobs from '../../components/GuitarPickBlobs/GuitarPickBlobs'; // <-- Importamos el nuevo componente
 
 const About: React.FC = () => {
     return (
         <div className={styles.pageWrapper}>
-            {/* --- ENCABEZADO REDISEÑADO CON PÚAS --- */}
+            {/* --- ENCABEZADO CON RESPLANDOR SUTIL --- */}
             <header className={styles.pageHeader}>
-                <GuitarPickBlobs className={styles.headerBlobs} />
                 <h1 className={styles.mainTitle}>La esencia de lo artesanal</h1>
             </header>
 
             <div className={styles.cardsContainer}>
-                {/* ... (el resto del JSX no cambia, solo se verán afectados por el nuevo CSS) ... */}
+                {/* ... (el resto del JSX no cambia) ... */}
                 <div className={`${styles.artisticCard} ${styles.terrazzoCard}`}>
                     <h2 className={styles.cardTitle}>Nuestra Misión</h2>
                     <p>

@@ -1,17 +1,33 @@
-/* src/Pages/About.module.css (Rediseño final con púas, texturas y legibilidad mejorada) */
+/* src/Pages/About.module.css (Con espaciado ajustado) */
 .pageWrapper {
+    position: relative; /* Necesario para posicionar el resplandor */
     padding: 0 2rem 6rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    overflow-x: hidden; /* Evita que el resplandor cause scroll horizontal */
+}
+
+/* --- RESPLANDOR MOVUDO AL WRAPPER PARA UNA TRANSICIÓN SUAVE --- */
+.pageWrapper::before {
+    content: '';
+    position: absolute;
+    z-index: -1; /* Detrás de todo el contenido */
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%; /* Un poco más ancho que el contenido */
+    height: 700px; /* Altura suficiente para desvanecerse tras las cards */
+    background: radial-gradient(circle at 50% 20%, rgba(197, 110, 85, 0.18) 0%, rgba(197, 110, 85, 0) 55%);
+    filter: blur(60px); /* Un blur más generoso */
+    pointer-events: none; /* No interfiere con el ratón */
 }
 
 .pageHeader {
     position: relative;
     text-align: center;
-    padding: 8rem 0;
-    margin-bottom: -2rem;
-    z-index: 5;
-    min-height: 250px;
+    /* Reducimos el padding superior e inferior */
+    padding: 5rem 0 2rem 0; /* Ajustado */
+    margin-bottom: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,18 +40,6 @@
     z-index: 2;
     color: var(--color-text);
 }
-
-.headerBlobs {
-    position: absolute;
-    z-index: 1;
-    width: 150%;
-    max-width: 800px; /* Limita el tamaño de los blobs */
-    height: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 
 .cardsContainer {
     display: grid;
@@ -75,7 +79,7 @@
 .terrazzoCard::before {
     background:
             linear-gradient(rgba(253, 251, 250, 0.85), rgba(253, 251, 250, 0.85)),
-            url('../../assets/terrazzo-pattern.png'); /* Ruta corregida */
+            url('../../assets/terrazzo-pattern.png');
     mix-blend-mode: multiply;
 }
 
@@ -83,26 +87,118 @@
 .concreteCard::before {
     background:
             linear-gradient(rgba(253, 251, 250, 0.85), rgba(253, 251, 250, 0.85)),
-            url('../../assets/concreto-beige.jpg'); /* Ruta corregida */
+            url('../../assets/concreto-beige.jpg');
     mix-blend-mode: multiply;
 }
 
 /* --- TEXTO DE LAS TARJETAS (MÁS FUERTE) --- */
 .cardTitle {
     font-family: var(--font-serif);
-    font-size: 1.8rem; /* Un poco más grande */
+    font-size: 1.8rem;
     font-weight: 700;
     margin: 0 0 1rem 0;
     position: relative;
     z-index: 1;
-    color: var(--color-text); /* Color sólido */
+    color: var(--color-text);
 }
 
 .artisticCard p {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: rgba(78, 42, 42, 1); /* Color sólido y más oscuro */
+    color: rgba(78, 42, 42, 1);
     margin: 0;
     position: relative;
     z-index: 1;
+}
+
+/* --- Ajustes Responsive para About Page --- */
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+    .pageWrapper {
+        padding: 0 1rem 4rem 1rem; /* Reducir padding horizontal y vertical */
+    }
+
+    .pageHeader {
+        padding: 4rem 0 1.5rem 0; /* Ajustado para móviles */
+        margin-bottom: 2rem;
+    }
+
+    .mainTitle {
+        font-size: clamp(2rem, 8vw, 2.5rem); /* Ajuste de tamaño de fuente para el título */
+    }
+
+    .cardsContainer {
+        grid-template-columns: 1fr; /* Una columna en móviles */
+        gap: 1.5rem; /* Reducir el espacio entre tarjetas */
+    }
+
+    .artisticCard {
+        padding: 1.5rem; /* Reducir padding interno de las tarjetas */
+    }
+
+    .cardTitle {
+        font-size: 1.5rem;
+    }
+
+    .artisticCard p {
+        font-size: 1rem;
+    }
+}
+
+/* Móviles y tabletas (481px a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .pageWrapper {
+        padding: 0 1.5rem 5rem 1.5rem;
+    }
+
+    .pageHeader {
+        padding: 4.5rem 0 2rem 0; /* Ajustado para tabletas */
+        margin-bottom: 2.5rem;
+    }
+
+    .mainTitle {
+        font-size: clamp(2.2rem, 6vw, 3rem);
+    }
+
+    .cardsContainer {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajustar minmax */
+        gap: 2rem;
+    }
+
+    .artisticCard {
+        padding: 2rem;
+    }
+
+    .cardTitle {
+        font-size: 1.6rem;
+    }
+
+    .artisticCard p {
+        font-size: 1.05rem;
+    }
+}
+
+/* Tabletas grandes y laptops pequeñas (769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .pageWrapper {
+        padding: 0 2rem 6rem 2rem;
+    }
+
+    .pageHeader {
+        padding: 5rem 0 2.5rem 0; /* Ajustado */
+        margin-bottom: 3rem;
+    }
+
+    .mainTitle {
+        font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+    }
+
+    .cardsContainer {
+        gap: 2.2rem;
+    }
+
+    .cardTitle {
+        font-size: 1.7rem;
+    }
 }
