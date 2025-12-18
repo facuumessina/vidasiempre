@@ -1,7 +1,7 @@
 // src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
 import './index.css';
 
 import Root from './Pages/Root.tsx'; // El layout principal con NavBar y Footer
@@ -20,6 +20,8 @@ const router = createBrowserRouter([
             { path: 'productos', element: <Products /> },
             { path: 'sobre-nosotros', element: <AboutPage /> },
             { path: 'terminos-y-condiciones', element: <TermsAndConditions /> },
+            // Ruta comodín: si no coincide con ninguna de las anteriores, redirige al inicio
+            { path: '*', element: <Navigate to="/" replace /> },
         ],
     },
 ]);
