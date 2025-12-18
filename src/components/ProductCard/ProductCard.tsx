@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ProductCard.module.css';
+import { useToast } from '../Toast/ToastContext'; // Importamos el hook
 
 // Definimos la estructura de datos para cada producto
 export interface Product {
@@ -14,7 +15,14 @@ interface ProductCardProps {
     shopUrl: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, shopUrl }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+    const { showToast } = useToast(); // Usamos el hook
+
+    const handleComingSoonClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        showToast('¡Sitio en construcción! Estamos trabajando en ello 😉');
+    };
+
     return (
         <article className={styles.productCard}>
             {/* Media: Contenedor de la imagen */}
@@ -33,7 +41,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, shopUrl }) => {
 
             {/* CTA: Botón que lleva a la tienda */}
             <div className={styles.cardCta}>
-                <a href={shopUrl} target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
+                <a href="#" onClick={handleComingSoonClick} className={styles.ctaButton}>
                     Ver en la tienda
                 </a>
             </div>

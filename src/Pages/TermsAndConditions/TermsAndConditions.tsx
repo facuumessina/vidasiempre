@@ -39,7 +39,7 @@ const TermsAndConditions: React.FC = () => {
             </section>
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>7. Ley Aplicable</h2>
-                <p>Estos términos y condiciones se rigen e interpretan de acuerdo con las leyes de [Tu País/Región] y usted se somete irrevocablemente a la jurisdicción exclusiva de los tribunales de ese estado o ubicación.</p>
+                <p>Estos términos y condiciones se rigen e interpretan de acuerdo con las leyes de Argentina y usted se somete irrevocablemente a la jurisdicción exclusiva de los tribunales de ese estado o ubicación.</p>
             </section>
         </div>
     );

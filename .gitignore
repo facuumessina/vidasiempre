@@ -22,6 +22,9 @@
 /dist
 /build
 
+# Archivos de información de compilación de TypeScript
+*.tsbuildinfo
+
 # =========================================================================
 # LOGS Y REPORTES
 # =========================================================================
@@ -83,3 +86,6 @@ ehthumbs.db
 # Archivos temporales de Vite
 .vite
 .vite-temp
+
+# Archivos temporales de Node
+.node_repl_history

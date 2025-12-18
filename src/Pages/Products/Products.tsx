@@ -1,29 +1,34 @@
 // src/pages/Products.tsx
 import React from 'react';
 import ProductCard, { Product } from '../../components/ProductCard/ProductCard.tsx';
-import styles from './Products.module.css'; // Crearemos este archivo a continuación
+import styles from './Products.module.css';
+import macetaVintage from '../../assets/maceta-vintage.png';
+import macetaPlato from '../../assets/maceta-plato.png';
+import portaVela from '../../assets/porta-velas.png';
 
 // Aquí defines la información de tus productos
 const productsData: Product[] = [
     {
-        imageUrl: 'https://images.unsplash.com/photo-1594535182358-052458145248?q=80&w=1974',
-        title: 'Maceta Cilíndrica',
-        description: 'Diseño minimalista en concreto pulido. Ideal para suculentas y plantas de interior de tamaño mediano.',
+        // Puedes reemplazar esta URL por la foto real de tu porta-velas
+        imageUrl: portaVela,
+        title: 'Porta-Velas',
+        description: 'Ilumina tus espacios con calidez. Diseño geométrico en concreto que resalta la luz natural de tus velas y crea una atmósfera acogedora.',
         tag: 'Concreto',
     },
     {
-        imageUrl: 'https://images.unsplash.com/photo-1621283168288-515ce94038b3?q=80&w=1974',
-        title: 'Bandeja de Terrazo',
-        description: 'Cada pieza es única. Perfecta como vaciabolsillos, base para velas o un toque de arte en tu mesa.',
-        tag: 'Terrazo',
-    },
-    {
-        imageUrl: 'https://images.unsplash.com/photo-1587054239092-8a4a5c5354a3?q=80&w=1974',
-        title: 'Porta-Incienso',
-        description: 'Pequeños detalles que crean grandes atmósferas. Hecho a mano con terminación suave.',
+        // Puedes reemplazar esta URL por la foto real de tu maceta con plato
+        imageUrl: macetaPlato,
+        title: 'Maceta con Plato',
+        description: 'Funcionalidad y estética unidas. Incluye drenaje y plato a medida para el cuidado perfecto de tus plantas, protegiendo tus superficies con estilo.',
         tag: 'Concreto',
     },
-    // ...Puedes agregar más productos aquí
+    {
+        // Puedes reemplazar esta URL por la foto real de tu maceta vintage
+        imageUrl: macetaVintage,
+        title: 'Maceta Vintage',
+        description: 'Un guiño al pasado con texturas modernas. Su relieve acanalado aporta carácter, nostalgia y un toque distintivo a cualquier rincón.',
+        tag: 'Concreto',
+    },
 ];
 
 const Products: React.FC = () => {

@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './NavBar.module.css';
-import logo from '../../assets/logo-navbar.png'; // Asegúrate de que esta ruta sea correcta
+import logo from '../../assets/logo-navbar.png';
+import { useToast } from '../Toast/ToastContext'; // Importamos el hook
 
 const NavBar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { showToast } = useToast(); // Usamos el hook
+
+    const handleComingSoonClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        showToast('¡Próximamente disponible! Estamos trabajando en ello 😊');
+    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -28,7 +35,7 @@ const NavBar: React.FC = () => {
                     <li><NavLink to="/sobre-nosotros" className={({ isActive }) => (isActive ? styles.active : '')}>Sobre Nosotros</NavLink></li>
                 </ul>
                 <div className={styles.navEnd}>
-                    <a href="https://tu-tienda.mercadoshops.com.ar" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
+                    <a href="#" onClick={handleComingSoonClick} className={styles.ctaButton}>
                         Tienda
                     </a>
                 </div>
@@ -48,7 +55,7 @@ const NavBar: React.FC = () => {
                             <li><NavLink to="/productos" className={({ isActive }) => (isActive ? styles.active : '')} onClick={toggleMenu}>Productos</NavLink></li>
                             <li><NavLink to="/sobre-nosotros" className={({ isActive }) => (isActive ? styles.active : '')} onClick={toggleMenu}>Sobre Nosotros</NavLink></li>
                         </ul>
-                        <a href="https://tu-tienda.mercadoshops.com.ar" target="_blank" rel="noopener noreferrer" className={styles.mobileCtaButton} onClick={toggleMenu}>
+                        <a href="#" onClick={handleComingSoonClick} className={styles.mobileCtaButton}>
                             Tienda
                         </a>
                     </div>

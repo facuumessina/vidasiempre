@@ -2,7 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
-import instagramLogo from '../../assets/instagram.svg'; // Importamos el logo
+import instagramLogo from '../../assets/instagram.svg';
+import { useToast } from '../Toast/ToastContext'; // Importamos el hook
 
 const FooterWave = () => (
     <div className={styles.waveContainer}>
@@ -13,20 +14,26 @@ const FooterWave = () => (
 );
 
 const Footer: React.FC = () => {
+    const { showToast } = useToast(); // Usamos el hook
+
+    const handleComingSoonClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        showToast('¡Sitio en construcción! Estamos trabajando en ello 😉');
+    };
+
     return (
         <footer className={styles.footerWrapper}>
             <FooterWave />
             <div className={styles.footerContent}>
                 <div className={styles.linksContainer}>
                     <span>&copy; {new Date().getFullYear()} Vida Siempre</span>
-                    <span className={`${styles.separator} ${styles.hideOnMobile}`}>•</span> {/* Añadimos la clase hideOnMobile */}
-                    {/* Nuevo grupo para Términos y Condiciones e Instagram */}
+                    <span className={`${styles.separator} ${styles.hideOnMobile}`}>•</span>
                     <div className={styles.termsAndSocialGroup}>
                         <Link to="/terminos-y-condiciones" className={styles.footerLink}>
                             Términos y Condiciones
                         </Link>
                         <span className={styles.separator}>•</span>
-                        <a href="https://www.instagram.com/vidasiempre.art" target="_blank" rel="noopener noreferrer" className={styles.socialIconLink}>
+                        <a href="#" onClick={handleComingSoonClick} className={styles.socialIconLink}>
                             <img src={instagramLogo} alt="Instagram" className={styles.socialIcon} />
                         </a>
                     </div>

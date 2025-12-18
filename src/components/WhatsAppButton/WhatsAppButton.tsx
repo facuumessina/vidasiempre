@@ -1,25 +1,23 @@
 import React from 'react';
 import styles from './WhatsAppButton.module.css';
-// 1. Importamos la imagen PNG desde la carpeta de assets
 import whatsappIconImage from '../../assets/whatsapp-icon.png';
+import { useToast } from '../Toast/ToastContext'; // Importamos el hook
 
 const WhatsAppButton: React.FC = () => {
-    // --- CONFIGURACIÓN ---
-    const phoneNumber = '5491112345678'; // Reemplaza con tu número
-    const message = 'Hola, me gustaría comunicarme con ustedes.';
+    const { showToast } = useToast(); // Usamos el hook
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const handleComingSoonClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        showToast('¡Próximamente disponible! Estamos trabajando en ello 😊');
+    };
 
     return (
         <a
-            href={whatsappUrl}
+            href="#"
+            onClick={handleComingSoonClick}
             className={styles.whatsappButton}
-            target="_blank"
-            rel="noopener noreferrer"
             aria-label="Contactar por WhatsApp"
         >
-            {/* 2. Usamos una etiqueta <img> con la imagen importada */}
             <img src={whatsappIconImage} alt="WhatsApp" className={styles.iconImage} />
         </a>
     );

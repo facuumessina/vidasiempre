@@ -4,10 +4,9 @@ import styles from './Hero.module.css';
 
 interface HeroProps {
     logo: string;
-    shopUrl: string;
 }
 
-const Hero: React.FC<HeroProps> = ({ logo, shopUrl }) => {
+const Hero: React.FC<HeroProps> = ({ logo }) => {
     return (
         <header className={styles.heroSection}>
             <div className={styles.contentWrapper}>
