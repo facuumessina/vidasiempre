@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import styles from './NavBar.module.css';
-import logo from '../../assets/logo-navbar.png';
-import { useToast } from '../Toast/ToastContext'; // Importamos el hook
+import styles from './Navbar.module.css'; // Corregido el casing
+import logo from '../../assets/vida-siempre-logo.png';
+import { useToast } from '../Toast/ToastContext';
 
 const NavBar: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const { showToast } = useToast(); // Usamos el hook
+    const { showToast } = useToast();
 
     const handleComingSoonClick = (e: React.MouseEvent) => {
         e.preventDefault();
